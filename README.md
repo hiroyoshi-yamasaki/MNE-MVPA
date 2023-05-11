@@ -19,9 +19,6 @@ graph TD
         raw_data("Raw"):::mne_data --> check_raw(["Check for bad data"]):::manual_process;
         check_raw --> checked_raw;
         checked_raw --> filter;
-        
-        
-        
     end
     
 ```
