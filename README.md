@@ -22,11 +22,6 @@ graph TD
         checked_raw --> filter(["filter.py"]):::automatic_process;
         %%filter --> filtered_raw("Filtered raw"):::mne_data;
         
-        %% Artefact removal with ICA
-        filtered_raw --> ica(["ica.py"]):::automatic_process;
-        ica --> recon_raw("Reconstructed raw"):::mne_data;
-        filtered_raw -.-> man_ica(["manual ICA"]):::manual_process;
-        man_ica -.-> recon_raw;
         
         
     end
