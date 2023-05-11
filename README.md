@@ -40,4 +40,48 @@ graph TD
     selected_events --> epoch;
     epoch --> epochs("Epoched data"):::mne_data;
     
+    subgraph "Forward Solution"
+        
+        %% Make a FreeSurfer surface reconstruction
+        T1("T1"):::other_data --> recon(["reconstruct.sh"]):::automatic_process;
+        recon --> fs_surface("FreeSurfer surface"):::other_data;
+        
+        %% Create BEM
+        fs_surface --> make_bem(["make-bem.sh"]):::automatic_process;
+        make_bem --> bem("BEM"):::other_data;
+        
+        %% Source space
+        fs_surface --> make_src(["source_space.py"]):::automatic_process;
+        make_src --> src("Source space"):::mne_data;
+        
+        %% Coregistration
+        info("Info"):::mne_data --> coreg(["coregistration.py"]):::automatic_process;
+        info -.-> man_coreg(["Manual coregistration"]):::manual_process;
+        
+        coreg --> trans("Head-MRI trans"):::mne_data;
+        man_coreg -.-> trans;
+        
+        %% Make forward solution
+        trans --> make_fwd(["forward_solution.py"]):::automatic_process;
+        src --> make_fwd;
+        bem --> make_fwd;
+        make_fwd --> fwd("Forward solution"):::mne_data;
+    end
+    
+    subgraph "Source Estimation"
+        
+        %% Calculate noise covariance matrix
+        epochs --> noise_cov(["Calculate noise covariance"]):::automatic_process;
+        noise_cov --> cov("Noise covariance"):::mne_data;
+        
+        %% Make an inverse operator
+        fwd --> make_inv(["make_inv.py"]):::automatic_process;
+        cov --> make_inv;
+        make_inv --> inv("Inverse operator"):::mne_data;
+        
+        %% Estimate source
+        epochs --> estimate(["Source estimation"]):::automatic_process;
+        inv --> estimate;
+        estimate --> stc("Source estimate"):::mne_data;
+    end
 ```
