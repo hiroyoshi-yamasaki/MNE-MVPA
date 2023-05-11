@@ -21,7 +21,7 @@ graph TD
     
         %% Filter the data
         checked_raw --> filter(["filter.py"]):::automatic_process;
-        filter --> filtered_raw("Filtered raw"):::mne_data;
+        %%filter --> filtered_raw("Filtered raw"):::mne_data;
         
     end
     
