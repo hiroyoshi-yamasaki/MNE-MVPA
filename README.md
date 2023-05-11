@@ -1,12 +1,11 @@
 # MNE-MVPA
 An extension of MNE-python to perform Multi-Variate Pattern Analysis.
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
 ```mermaid
 graph TD
     %% Processes
     classDef automatic_process fill: #b21, stroke-width: 5px, stroke: #777
-    classDef manual_process fill: #c71, stroke-width: 5px, stroke: #777, stroke-dasharray: 5, 5;
+    classDef manual_process fill: #c71, stroke-width: 5px, stroke: #777
     
     %% Data
     classDef mne_data fill: #05c, stroke-width: 5px, stroke: #777
