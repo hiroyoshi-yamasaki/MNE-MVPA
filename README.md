@@ -1,6 +1,7 @@
 # MNE-MVPA
 An extension of MNE-python to perform Multi-Variate Pattern Analysis.
 
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
 ```mermaid
 graph TD
     %% Processes
@@ -17,11 +18,16 @@ graph TD
     
         %% Manual check for bad channels, artefacts etc.
         raw_data("Raw"):::mne_data --> check_raw(["Check for bad data"]):::manual_process;
-        check_raw --> checked_raw;%%["Checked raw"]:::mne_data;
+        check_raw --> checked_raw("Checked raw"):::mne_data;
     
-        checked_raw --> filter("filter.py"); %%(["filter.py"]):::automatic_process;
+        checked_raw --> filter(["filter.py"]):::automatic_process;
         %%filter --> filtered_raw("Filtered raw"):::mne_data;
         
+        %% Artefact removal with ICA
+        filtered_raw --> ica(["ica.py"]):::automatic_process;
+        ica --> recon_raw("Reconstructed raw"):::mne_data;
+        filtered_raw -.-> man_ica(["manual ICA"]):::manual_process;
+        man_ica -.-> recon_raw;
         
         
     end
