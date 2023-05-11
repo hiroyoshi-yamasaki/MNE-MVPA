@@ -18,8 +18,7 @@ graph TD
         %% Manual check for bad channels, artefacts etc.
         raw_data("Raw"):::mne_data --> check_raw(["Check for bad data"]):::manual_process;
         check_raw --> checked_raw;
-    
-        checked_raw --> filter(["filter.py"]);
+        checked_raw --> filter;
         
         
         
