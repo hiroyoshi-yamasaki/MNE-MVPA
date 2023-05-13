@@ -3,8 +3,11 @@
 # Script for performing FreeSurfer reconstruction of subject’s brain from nifti file
 # Executing this will create SUBJECT/NAME with several folders (bem, label, mri etc.)
 # See https://mne.tools/stable/auto_tutorials/forward/10_background_freesurfer.html
+#
+# NOTE: for MacOS, install gawk with `$ brew install gawk`
+#
 # Run the file as follows:
-# .../reconstruct.sh "path/to/freesurfer/home" "path/to/subjects/dir" "subject-name" "path/to/Nifti/file"
+# `$ .../reconstruct.sh "path/to/freesurfer/home" "path/to/subjects/dir" "subject-name" "path/to/Nifti/file"`
 
 # Edit these parameters
 HOME="$1"                         # path to FreeSurfer home
