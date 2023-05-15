@@ -9,7 +9,6 @@
 # Run the file as follows:
 # `$ .../reconstruct.sh "path/to/freesurfer/home" "path/to/subjects/dir" "subject-name" "path/to/Nifti/file"`
 
-# Edit these parameters
 HOME="$1"                         # path to FreeSurfer home
 SUBJECTS="$2"                     # path to subjects_dir
 NAME="$3"                         # name of the subject, e.g. 'sub-V1001'
