@@ -9,7 +9,7 @@ from ..utils.logging import setup_logging
 logger = setup_logging(name="coregistration", level="info", mne_level="info")
 
 
-def get_trans(info_file: Union[str, Path], dst_dir: Path, subject: str, subjects_dir: Union[str, Path],
+def get_trans(info_file: Union[str, Path], dst_dir: Union[str, Path], subject: str, subjects_dir: Union[str, Path],
               fiducials: str = "auto",
               initial_n_iterations: int = 6, initial_nasion_weight: float = 2.0, distance: float = 5.0,
               final_n_iterations: int = 20, final_nasion_weight: float = 10.0):
@@ -22,8 +22,8 @@ def get_trans(info_file: Union[str, Path], dst_dir: Path, subject: str, subjects
     :param subjects_dir: path to FreeSurfer `subjects_dir`
     :param fiducials: fiducials estimation, default 'auto'
     (see https://mne.tools/stable/generated/mne.coreg.Coregistration.html)
-    :param initial_n_iterations: number of iterations for first ICP (see mne.coreg.Coregistration.html)
-    :param initial_nasion_weight: nasion weight for first ICP (see mne.coreg.Coregistration.html)
+    :param initial_n_iterations: number of iterations for the first ICP (see mne.coreg.Coregistration.html)
+    :param initial_nasion_weight: nasion weight for the first ICP (see mne.coreg.Coregistration.html)
     :param distance: max. distance to determine outliers (see mne.coreg.Coregistration.html)
     :param final_n_iterations: number of iterations for the final ICP (see mne.coreg.Coregistration.html)
     :param final_nasion_weight: nasion weight for the final ICP (see mne.coreg.Coregistration.html)
