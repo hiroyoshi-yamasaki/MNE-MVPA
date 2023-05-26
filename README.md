@@ -51,7 +51,7 @@ graph TD
         make_bem --> bem("BEM"):::other_data;
         
         %% Source space
-        fs_surface --> make_src(["source_space.py"]):::automatic_process;
+        fs_surface --> make_src(["setup_source_space"]):::automatic_process;
         make_src --> src("Source space"):::mne_data;
         
         %% Coregistration
