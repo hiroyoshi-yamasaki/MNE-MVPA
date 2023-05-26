@@ -1,0 +1,39 @@
+import json
+import os
+from pathlib import Path
+
+PARAM_FILE = "data/parameters/test.json"
+
+with open(PARAM_FILE, "r") as f:
+    params = json.load(f)
+
+SRC_DIR = Path(params["src_root"])
+DST_DIR = Path(params["dst_root"]) / params["name"]
+if not DST_DIR.exists():
+    os.makedirs(DST_DIR)
+
+def get_all_data_list():
+
+    if params["dataset"] == "sample":
+        return get_all_data_list_sample()
+
+    else:
+        raise ValueError(f"Unknown dataset {params['dataset']}")
+
+def get_all_data_list_sample():
+    return [SRC_DIR / "sample_raw.fif"]
+
+
+all_data = get_all_data_list()
+
+# Set targets
+target = []
+
+if params["target"] == "filtered_raw":
+    target = expand(DST_DIR / "sppas_ipu_csv" / "{sample}.csv", sample=all_data)
+
+
+rule all:
+    input:
+        target
+
