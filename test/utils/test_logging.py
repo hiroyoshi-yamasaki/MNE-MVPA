@@ -22,7 +22,7 @@ class TestFilter(TestCase):
         if test_file.exists():
             os.remove(test_file)
 
-        logger = setup_logging(name="test", mne_level="info")
+        logger = setup_logging(name="test", level="debug", mne_level="info")
 
         with tempfile.TemporaryDirectory() as tmp_dir:
 
