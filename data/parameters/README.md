@@ -28,6 +28,7 @@ a directory `dst_root/name`
 ```json
 {
   "name": "test",
+  "src_root": "",
   "dst_root": "",
   "dataset": "sample",
   "target": "target-file",
