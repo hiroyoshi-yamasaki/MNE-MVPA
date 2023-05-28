@@ -71,7 +71,7 @@ graph TD
     subgraph "Source Estimation"
         
         %% Calculate noise covariance matrix
-        epochs --> noise_cov(["Calculate noise covariance"]):::automatic_process;
+        epochs --> noise_cov(["compute_covariance"]):::automatic_process;
         noise_cov --> cov("Noise covariance"):::mne_data;
         
         %% Make an inverse operator
